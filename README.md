@@ -1,14 +1,14 @@
 # pub-sub-transporter-redis
 
-> Implementation of [Pub/Sub Transporter Interface](https://github.houston.softwaregrp.net/andreas-weber/pub-sub#pubsubtransporter---pubsub-transporter-interface) based on Redis Pub/Sub
+> Implementation of [Pub/Sub Transporter Interface](https://github.com:twittwer/pub-sub#pubsubtransporter---pubsub-transporter-interface) based on Redis Pub/Sub
 
-# Installation
-```
-npm install git+ssh://git@github.houston.softwaregrp.net:andreas-weber/pub-sub-transporter-redis.git
-```
+## Installation
 
-# Usage
-```
+`npm install git+ssh://git@github.com:twittwer/pub-sub-transporter-redis.git`
+
+## Usage
+
+```javascript
 const redis = require( 'redis' ), // using node-redis as redis connector
     pubSub = require( 'pub-sub' );
 
@@ -30,32 +30,35 @@ pubSub.initialize( {
 } );
 ```
 
-# Reference
+## Reference
+
 > required **parameters** are written bold  
-> optional *parameters* are written italic or marked with `[`square brackets`]`  
+> optional *parameters* are written italic or marked with `[`square brackets`]`
 
-## Methods
+### Methods
 
-### pubSubTransporterRedis.initialize(config): pubSubTransporter
+#### pubSubTransporterRedis.initialize(config): pubSubTransporter
+
 Initializes Redis Pub/Sub Transporter
 
-**Returns** `pubSubTransporter` based on [Pub/Sub Transporter Interface](https://github.houston.softwaregrp.net/andreas-weber/pub-sub#pubsubtransporter---pubsub-transporter-interface)
+**Returns** `pubSubTransporter` based on [Pub/Sub Transporter Interface](https://github.com:twittwer/pub-sub#pubsubtransporter---pubsub-transporter-interface)
 
 | Param  | Type           | Description          |
 | ------ | -------------- | -------------------- |
 | config | `moduleConfig` | module configuration |
 
-## Custom Type Definitions
+### Custom Type Definitions
 
-### `moduleConfig` - Module Configuration
+#### `moduleConfig` - Module Configuration
 
 | Param             | Type                | Description                                                                               |
 | ----------------- | ------------------- | ----------------------------------------------------------------------------------------- |
 | **clientFactory** | `() => redisClient` | client creator for underlying event transporter (Redis Pub/Sub; must return Redis client) |
 
-### `redisClient` - Redis Client Interface
+#### `redisClient` - Redis Client Interface
 
-#### redisClient.publish(channel, dataString): void
+##### redisClient.publish(channel, dataString): void
+
 Publishes Data to Channel
 
 | Param      | Type     | Description                         |
@@ -63,7 +66,8 @@ Publishes Data to Channel
 | channel    | `string` | name of targeted channel            |
 | dataString | `string` | stringified data to emit on channel |
 
-#### redisClient.subscribe(channel)
+##### redisClient.subscribe(channel): void
+
 Subscribes Client to Channel  
 Incoming data is retrieved by client's message event.
 
@@ -71,14 +75,16 @@ Incoming data is retrieved by client's message event.
 | ------- | -------- | ----------------------------------------------- |
 | channel | `string` | name of channel, the client should subscribe to |
 
-#### redisClient.unsubscribe(channel)
+##### redisClient.unsubscribe(channel): void
+
 Unsubscribes Client from Channel
 
 | Param   | Type     | Description                                             |
 | ------- | -------- | ------------------------------------------------------- |
 | channel | `string` | name of channel, the client should end his subscription |
 
-#### redisClient.on(event, handler)
+##### redisClient.on(event, handler): void
+
 Registers Event Handler on Client  
 The 'message' event should be fired for every publication on subscribed channels and  
 should provide the parameters for the following handler signature `(channel, dataString) => void`.
