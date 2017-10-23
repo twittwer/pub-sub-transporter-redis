@@ -1,0 +1,22 @@
+{
+  "name": "pub-sub-transporter-redis",
+  "version": "0.2.0",
+  "description": "Implementation of Pub/Sub Transporter Interface based on Redis Pub/Sub",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git@github.houston.softwaregrp.net:andreas-weber/pub-sub-transporter-redis.git"
+  },
+  "author": {
+    "name": "Tobias Wittwer",
+    "url": "https://github.com/twittwer"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "uuid": "^3.1.0"
+  },
+  "devDependencies": {
+    "eslint": "^4.6.1",
+    "eslint-config-es": "^0.8.11"
+  }
+}
